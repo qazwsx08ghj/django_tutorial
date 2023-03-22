@@ -1,4 +1,4 @@
-# Django Turorial
+# Django Tutorial
 
 This is a tutorial for Django.
 
@@ -8,7 +8,12 @@ This is a tutorial for Django.
 
 ### 2.Install MariaDB
 
-### 3.To install Django, run the following command:
+### 3.DB command
+
+    $ mysql -u root -p
+    $ create database django_tutorial;
+
+### 4.To install Django, run the following command:
 
     $ pip install django
 
