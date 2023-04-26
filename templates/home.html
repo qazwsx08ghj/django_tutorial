@@ -1,16 +1,49 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>
+    {% block title %}
+        Home
+    {% endblock %}
+    </title>
+
+    {% block style %}
+
+    {% endblock %}
 </head>
 <body>
 {#    <h1>Title</h1>#}
 {#    <p>content</p>#}
+{% block body %}
+
     {% for post in posts %}
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.content }}</p>
+    <div class="container" style="margin-bottom: 15px;">
+        <div class="row justify-content-center align-items-center　gy-5">
+            <div class="col col-md-6">
+                <div class="card" style="width: 100%;">
+                  <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text　">{{ post.content }}</p>
+
+                        <div class="d-flex justify-content-between">
+                        <a class="btn btn-link link-danger p-md-1 my-1" data-mdb-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">Read more</a>
+                            <div>
+                                <i class="fas fa-share-alt text-muted p-md-1 my-1 me-2" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Share this post"></i>
+                                <i class="fas fa-heart text-muted p-md-1 my-1 me-0" data-mdb-toggle="tooltip" data-mdb-placement="top" title="I like it"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endfor %}
+
+
+{% endblock %}
+
 
 </body>
 </html>
