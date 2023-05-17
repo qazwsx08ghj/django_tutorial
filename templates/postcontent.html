@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Post content
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block body %}
+<form method="post" action="{% url 'postcontent' %}" class="gradient-custom">
+{% csrf_token %}
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Post Content</h2>
+              <p class="text-white-50 mb-5">Write Something</p>
+
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="">Title</label>
+                <input type="text" id="" class="form-control form-control-lg" name="title"/>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="">Write something</label>
+                <textarea type="textarea" id="" class="form-control form-control-lg" name="body"></textarea>
+              </div>
+              <button class="btn btn-outline-light btn-lg px-5" type="submit">Push</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
