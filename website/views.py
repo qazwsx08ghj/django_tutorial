@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as user_login
 from .forms import UserRegisterForm, postContentForm
@@ -59,4 +59,27 @@ def postContent(request):
             print(postCreateForm.cleaned_data)
     return render(request, 'postcontent.html')
 
+
+def myPage(request):
+    posts = post.objects.filter(user=request.user)
+    return render(request, 'mypage.html', {"posts": posts})
+
+
+def deleteContent(request, id):
+    deletePost = get_object_or_404(post, id=id)
+    if request.method == 'GET':
+        deletePost.delete()
+        return redirect('mypage')
+    return redirect('mypage')
+
+
+def updateContent(request, id):
+    updatePost = get_object_or_404(post, id=id)
+
+    if request.method == 'POST':
+        updatePost = postContentForm(request.POST, instance=updatePost)
+        if updatePost.is_valid():
+            updatePost.save()
+        return redirect('/mypage')
+    return render(request, 'updatecontent.html', {"updatepost": updatePost})
 
