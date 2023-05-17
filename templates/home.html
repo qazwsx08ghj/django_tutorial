@@ -24,11 +24,14 @@
             <div class="col col-md-6">
                 <div class="card" style="width: 100%;">
                   <div class="card-body">
+
+
                         <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text　">{{ post.content }}</p>
+                        <h6 class="card-subtitle mb-2 text-muted">Author:  {{ post.user }}</h6>
+                        <p class="card-text　">{{ post.body }}</p>
 
                         <div class="d-flex justify-content-between">
-                        <a class="btn btn-link link-danger p-md-1 my-1" data-mdb-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">Read more</a>
+                        <p class="card-text　">{{ post.date }}</p>
                             <div>
                                 <i class="fas fa-share-alt text-muted p-md-1 my-1 me-2" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Share this post"></i>
                                 <i class="fas fa-heart text-muted p-md-1 my-1 me-0" data-mdb-toggle="tooltip" data-mdb-placement="top" title="I like it"></i>

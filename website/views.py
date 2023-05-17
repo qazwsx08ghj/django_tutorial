@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as user_login
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, postContentForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from .models import post
 # Create your views here.
 
 
 def main(request):
-    posts = {'title': 'Title', 'content': 'Content'}, {'title': 'Title2', 'content': 'Content2'}
+    posts = post.objects.all()
 
     return render(request, 'home.html', {"posts": posts})
 
@@ -44,3 +45,18 @@ def register(request):
 def logOut(request):
     logout(request)
     return redirect('/')
+
+
+def postContent(request):
+    if request.method == 'POST':
+        postCreateForm = postContentForm(request.POST)
+        if postCreateForm.is_valid():
+            postCreate = postCreateForm.save(commit=False)
+            postCreate.user = request.user
+            postCreate.save()
+            return redirect('/')
+        else:
+            print(postCreateForm.cleaned_data)
+    return render(request, 'postcontent.html')
+
+

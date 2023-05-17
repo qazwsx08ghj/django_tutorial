@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 class post(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, blank=True, null=True)
     body = models.TextField(blank=True, null=True)
     date = models.DateTimeField(auto_created=True, auto_now_add=True, blank=True)
